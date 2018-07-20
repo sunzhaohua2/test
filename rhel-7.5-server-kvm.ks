@@ -22,8 +22,8 @@ zerombr
 clearpart --all --initlabel
 # autopart --type=plain --nohome # --nohome doesn't work because of rhbz#1509350
 # autopart --type=plain # autopart is problematic in that it creates /boot and swap partitions rhbz#1542510
-reqpart
-part / --fstype="xfs" --ondisk=vda --size=8000
+#reqpart
+part / --fstype="xfs" --ondisk=vda --size=4000
 reboot
 
 # Do not use --url, RHEL 7 anaconda may have a bug that excludes --repos if this is enabled
