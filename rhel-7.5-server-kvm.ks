@@ -102,7 +102,7 @@ rsync
 # Some things from @core we can do without in a minimal install
 -biosdevname
 -plymouth
-#-NetworkManager
+-NetworkManager
 -iprutils
 
 # rh-amazon-rhui-client
