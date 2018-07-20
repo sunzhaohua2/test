@@ -73,7 +73,7 @@ yum-utils
 cloud-init
 
 # RHV guest-agent
-ovirt-guest-agent-common
+#ovirt-guest-agent-common
 
 # RHN hosted / sat
 rhn-setup
@@ -83,7 +83,7 @@ yum-rhn-plugin
 # https://bugzilla.redhat.com/show_bug.cgi?id=966993
 #cloud-utils
 
-heat-cfntools
+#heat-cfntools
 
 cloud-utils-growpart
 # We need this image to be portable; also, rescue mode isn't useful here.
