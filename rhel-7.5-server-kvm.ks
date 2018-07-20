@@ -37,6 +37,7 @@ repo --name="rhel7" --baseurl=http://download.eng.bos.redhat.com/rcm-guest/puddl
 
 # Packages
 %packages
+@base 
 @core
 kernel
 nfs-utils
