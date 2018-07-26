@@ -1,4 +1,4 @@
-template: ../hosts/1master_etcd_nfs_node+Nnode
+template: ../hosts/1master_etcd_node+Nnode
 
 
 rhel_roles:
@@ -29,7 +29,3 @@ openshift_ansible_vars:
   openshift_docker_additional_registries: registry.reg-aws.openshift.com:443
   openshift_docker_insecure_registries: brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888,virt-openshift-05.lab.eng.nay.redhat.com:5000,virt-openshift-05.lab.eng.nay.redhat.com:5001,registry.reg-aws.openshift.com:443,asb-registry.usersys.redhat.com:5000
 
-
-  #openshift_disable_check: disk_availability,memory_availability,package_availability,docker_image_availability,docker_storage,package_version
-  openshift_check_min_host_disk_gb: 2
-  openshift_check_min_host_memory_gb: 1
