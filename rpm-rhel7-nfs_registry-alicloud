@@ -1,5 +1,3 @@
-template: ../hosts/1master_etcd_node+Nnode
-
 
 rhel_roles:
 - master
