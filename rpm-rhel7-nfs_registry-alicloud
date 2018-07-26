@@ -1,0 +1,46 @@
+template: ../hosts/1master_etcd_nfs_node+Nnode
+
+
+rhel_roles:
+- master
+- node
+- etcd
+- nfs
+
+
+iaas_name: alicloud
+node_number: 1
+image: qe-rhel-7-release
+openshift_playbook_rpm_repos=[{'id': 'aos-3_10-devel-install', 'name': 'aos-3_10-devel-install', 'baseurl': 'http://download.eng.bos.redhat.com/rcm-guest/puddles/RHAOS/AtomicOpenShift/3.10/latest/x86_64/os/', 'enabled': 1, 'gpgcheck': 0}]
+qe_additional_repos=[{'id': 'prerelease-rhel7', 'name': 'prerelease-rhel7', 'baseurl': 'https://mirror.openshift.com/enterprise/rhel/rhel7next/os', 'enabled': 0, 'gpgcheck': 0},{'id': 'prerelease-extra', 'name': 'prerelease-extra', 'baseurl': 'https://mirror.openshift.com/enterprise/rhel/rhel7next/extras', 'enabled': 0, 'gpgcheck': 0},{'id': 'dockernext', 'name': 'dockernext', 'baseurl': 'https://mirror.openshift.com/enterprise/rhel/dockerextra/x86_64/os/', 'enabled': 0, 'gpgcheck': 0},{'id': 'docker_previous', 'name': 'docker_previous', 'baseurl': 'https://mirror.openshift.com/enterprise/rhel/dockerextra.previous/x86_64/os/', 'enabled': 0, 'gpgcheck': 0},{'id': 'aos', 'name': 'Prerelease OCP', 'baseurl': 'https://mirror.openshift.com/enterprise/all/3.10/latest/x86_64/os', 'enabled': 1, 'gpgcheck': 0},{'id': 'fast-datapath', 'name': 'fast-datapath', 'baseurl': 'https://mirror.openshift.com/enterprise/rhel/rhel-7-fast-datapath-rpms/', 'enabled': 0, 'gpgcheck': 0}]
+
+install_update_docker: true
+docker_storage_driver: devicemapper
+os_update: false
+install_method: rpm
+auth_type: allowall
+openshift_master_default_subdomain_enable: true
+#openshift_release: v3.10
+
+openshift_ansible_vars:
+  openshift_deployment_type: openshift-enterprise
+  openshift_cockpit_deployer_prefix: registry.reg-aws.openshift.com:443/openshift3/
+  oreg_url: registry.reg-aws.openshift.com:443/openshift3/ose-${component}:${version}
+  openshift_docker_additional_registries: registry.reg-aws.openshift.com:443
+  openshift_docker_insecure_registries: brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888,virt-openshift-05.lab.eng.nay.redhat.com:5000,virt-openshift-05.lab.eng.nay.redhat.com:5001,registry.reg-aws.openshift.com:443,asb-registry.usersys.redhat.com:5000
+  openshift_docker_blocked_registries: registry.hacker.com
+  debug_level: 5
+  template_service_broker_selector: '{"role": "node"}'
+  ansible_service_broker_node_selector: '{"role": "node"}'
+
+  openshift_hosted_registry_storage_kind: nfs
+  openshift_enable_unsupported_configurations: true
+  openshift_hosted_registry_storage_nfs_options: '"*(rw,root_squash,sync,no_wdelay)"'
+  openshift_hosted_registry_storage_nfs_directory: /var/lib/exports
+  openshift_hosted_registry_storage_volume_name: regpv
+  openshift_hosted_registry_storage_access_modes: ["ReadWriteMany"]
+  openshift_hosted_registry_storage_volume_size: 17G
+
+  #openshift_disable_check: disk_availability,memory_availability,package_availability,docker_image_availability,docker_storage,package_version
+  openshift_check_min_host_disk_gb: 2
+  openshift_check_min_host_memory_gb: 1
