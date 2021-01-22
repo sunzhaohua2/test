@@ -1,0 +1,62 @@
+apiVersion: machine.openshift.io/v1beta1
+kind: MachineSet
+metadata:
+  labels:
+    machine.openshift.io/cluster-api-cluster: zhsun2-mmqfd
+    machine.openshift.io/cluster-api-machine-role: worker
+    machine.openshift.io/cluster-api-machine-type: worker
+  name: zhsun2-mmqfd-worker-centralus4
+  namespace: openshift-machine-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      machine.openshift.io/cluster-api-cluster: zhsun2-mmqfd
+      machine.openshift.io/cluster-api-machineset: zhsun2-mmqfd-worker-centralus4
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        machine.openshift.io/cluster-api-cluster: zhsun2-mmqfd
+        machine.openshift.io/cluster-api-machine-role: worker
+        machine.openshift.io/cluster-api-machine-type: worker
+        machine.openshift.io/cluster-api-machineset: zhsun2-mmqfd-worker-centralus4
+    spec:
+      metadata:
+        creationTimestamp: null
+      providerSpec:
+        value:
+          apiVersion: azureproviderconfig.openshift.io/v1beta1
+          credentialsSecret:
+            name: azure-cloud-credentials
+            namespace: openshift-machine-api
+          image:
+            offer: ""
+            publisher: ""
+            resourceID: /resourceGroups/zhsun2-mmqfd-rg/providers/Microsoft.Compute/images/zhsun2-mmqfd
+            sku: ""
+            version: ""
+          internalLoadBalancer: ""
+          kind: AzureMachineProviderSpec
+          location: centralus
+          managedIdentity: zhsun2-mmqfd-identity
+          metadata:
+            creationTimestamp: null
+          natRule: null
+          networkResourceGroup: zhsun2-mmqfd-rg
+          osDisk:
+            diskSizeGB: 128
+            managedDisk:
+              storageAccountType: Premium_LRS
+            osType: Linux
+          publicIP: true
+          publicLoadBalancer: ""
+          resourceGroup: zhsun2-mmqfd-rg
+          sshPrivateKey: ""
+          sshPublicKey: ""
+          subnet: zhsun2-mmqfd-worker-subnet
+          userDataSecret:
+            name: worker-user-data
+          vmSize: Standard_D2s_v3
+          vnet: zhsun2-mmqfd-vnet
+          zone: "1"

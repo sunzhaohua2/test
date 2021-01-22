@@ -1,0 +1,25 @@
+apiVersion: machine.openshift.io/v1beta1
+kind: MachineSet
+metadata:
+  labels:
+    machine.openshift.io/cluster-api-cluster: 
+  name: default-valued           
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      machine.openshift.io/cluster-api-cluster: zhsungcp9-wl2wh
+      machine.openshift.io/cluster-api-machineset: default-valued
+  template:
+    metadata:
+      labels:
+        machine.openshift.io/cluster-api-cluster: zhsungcp9-wl2wh
+        machine.openshift.io/cluster-api-machine-role: worker
+        machine.openshift.io/cluster-api-machine-type: worker
+        machine.openshift.io/cluster-api-machineset: default-valued
+    spec:
+      metadata: {}
+      providerSpec:
+        value:
+          region: us-central1
+          zone: us-central1-c 

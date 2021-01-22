@@ -1,0 +1,9 @@
+apiVersion: "autoscaling.openshift.io/v1alpha1"
+kind: "ClusterAutoscaler"
+metadata:
+  name: "default"
+spec:
+  resourceLimits:
+    maxNodesTotal: 11
+  scaleDown:
+    enabled: true

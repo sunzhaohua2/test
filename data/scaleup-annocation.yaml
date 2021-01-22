@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: scale-up-annocation
+  labels:
+    app: scale-up-annocation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: scale-up-annocation
+  template:
+    metadata:
+      labels:
+        app: scale-up-annocation
+      annotations:
+        cluster-autoscaler.kubernetes.io/safe-to-evict: "false"
+    spec:
+      containers:
+      - name: busybox
+        image: docker.io/library/busybox
+        resources:
+          requests:
+            memory: 2Gi
+        command:
+        - /bin/sh
+        - "-c"
+        - "echo 'this should be in the logs' && sleep 86400"
+      terminationGracePeriodSeconds: 0

@@ -1,0 +1,44 @@
+apiVersion: machine.openshift.io/v1beta1
+kind: Machine
+metadata:
+  labels:
+    machine.openshift.io/cluster-api-cluster: zhsun3-lvlzb
+    machine.openshift.io/cluster-api-machine-role: worker
+    machine.openshift.io/cluster-api-machine-type: worker
+    machine.openshift.io/instance-type: m1.large
+    machine.openshift.io/region: regionOne
+    machine.openshift.io/zone: nova
+  name: zhsun3-lvlzb-worker
+  namespace: openshift-machine-api
+spec:
+  metadata:
+    creationTimestamp: null
+  providerSpec:
+    value:
+      apiVersion: openstackproviderconfig.openshift.io/v1alpha1
+      cloudName: openstack
+      cloudsSecret:
+        name: openstack-cloud-credentials
+        namespace: openshift-machine-api
+      flavor: m1.large
+      image: rhcos-42.80.20190815.3
+      kind: OpenstackProviderSpec
+      metadata:
+        creationTimestamp: null
+      networks:
+      - filter: {}
+        subnets:
+        - filter:
+            name: zhsun3-lvlzb-nodes
+            tags: openshiftClusterID=zhsun3-lvlzb
+      securityGroups:
+      - filter: {}
+        name: zhsun3-lvlzb-worker
+      serverMetadata:
+        Name: zhsun3-lvlzb-worker
+        openshiftClusterID: zhsun3-lvlzb
+      tags:
+      - openshiftClusterID=zhsun3-lvlzb
+      trunk: true
+      userDataSecret:
+        name: worker-user-data

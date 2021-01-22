@@ -1,0 +1,14 @@
+apiVersion: machine.openshift.io/v1beta1
+kind: Machine
+metadata:
+  name: test-machine1
+  namespace: openshift-machine-api
+  labels:
+    test-label: test-label
+spec:
+  providerSpec:
+    valueFrom:
+      machineClass:
+        provider: aws
+        name: machineclass
+        namespace: openshift-machine-api

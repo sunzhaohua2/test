@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Template
+metadata:
+  name: test-machineautoscaler
+  annotations:
+    description: "For creating machineautoscaler"
+objects:
+- apiVersion: autoscaling.openshift.io/v1beta1
+  kind: MachineAutoscaler
+  metadata:
+    finalizers:
+    - machinetarget.autoscaling.openshift.io
+    name: ${NAME}
+    namespace: openshift-machine-api
+  spec:
+    maxReplicas: ${MAX}
+    minReplicas: ${MIN}
+    scaleTargetRef:
+      apiVersion: machine.openshift.io/v1beta1
+      kind: MachineSet
+      name: ${NAME}
+parameters:
+- description: max
+  value: 3
+  name: MAX
+- description: min
+  value: 1
+  name: MIN
+- description: name
+  value: "name"
+  name: NAME

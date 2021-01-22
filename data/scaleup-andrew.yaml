@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: work-queue-
+spec:
+  template:
+    spec:
+      containers:
+      - name: work
+        image: busybox
+        command: ["sleep",  "90930s"]
+        resources:
+          requests:
+            memory: 10Mi
+            cpu: 100m
+        imagePullPolicy: IfNotPresent
+      nodeSelector:
+        node-role.kubernetes.io/worker: ""
+      restartPolicy: Never
+      tolerations:
+      - key: "kubemark"
+        operator: "Exists"
+  backoffLimit: 4
+  completions: 180
+  parallelism: 180

@@ -1,0 +1,12 @@
+apiVersion: "machine.openshift.io/v1beta1"
+kind: MachineClass
+metadata:
+  name: machineclass
+  namespace: openshift-machine-api
+providerSpec:
+  apiVersion: "awsproviderconfig.openshift.io/v1beta1"
+  kind: "AWSMachineProviderConfig"
+  project: "openshift-machine-api"
+  zone: "us-east-2a"
+  machineType: "m4.large"
+  image: "registry.svc.ci.openshift.org/ocp/4.0-art-latest-2019-02-25-234632@sha256:660061d6eae3ee6d93ca836cd52e6033f1d611c629c1ce47cf272c9e9bda248"

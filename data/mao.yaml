@@ -1,0 +1,15 @@
+apiVersion: autoscaling.openshift.io/v1beta1
+kind: MachineAutoscaler
+metadata:
+  finalizers:
+  - machinetarget.autoscaling.openshift.io
+  name: machineautoscaler-b
+  namespace: openshift-machine-api
+spec:
+  maxReplicas: 3
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: machine.openshift.io/v1beta1
+    kind: MachineSet
+    name: zhsunosp17-6b49x-worker1
+status: {}
