@@ -1,0 +1,132 @@
+apiVersion: machine.openshift.io/v1beta1
+kind: Machine
+metadata:
+  annotations:
+    metal3.io/BareMetalHost: openshift-machine-api/openshift-worker-0-1
+  creationTimestamp: "2021-01-28T09:50:09Z"
+  finalizers:
+  - machine.machine.openshift.io
+  generateName: ocp-edge-cluster-0-mnwdz-worker-0-
+  generation: 2
+  labels:
+    machine.openshift.io/cluster-api-cluster: ocp-edge-cluster-0-mnwdz
+    machine.openshift.io/cluster-api-machine-role: worker
+    machine.openshift.io/cluster-api-machine-type: worker
+    machine.openshift.io/cluster-api-machineset: ocp-edge-cluster-0-mnwdz-worker-0
+  managedFields:
+  - apiVersion: machine.openshift.io/v1beta1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:generateName: {}
+        f:labels:
+          .: {}
+          f:machine.openshift.io/cluster-api-cluster: {}
+          f:machine.openshift.io/cluster-api-machine-role: {}
+          f:machine.openshift.io/cluster-api-machine-type: {}
+          f:machine.openshift.io/cluster-api-machineset: {}
+        f:ownerReferences:
+          .: {}
+          k:{"uid":"119a1bfc-a3e5-4525-8d6f-867b8729a2b3"}:
+            .: {}
+            f:apiVersion: {}
+            f:blockOwnerDeletion: {}
+            f:controller: {}
+            f:kind: {}
+            f:name: {}
+            f:uid: {}
+      f:spec:
+        .: {}
+        f:metadata: {}
+        f:providerSpec:
+          .: {}
+          f:value:
+            .: {}
+            f:apiVersion: {}
+            f:hostSelector: {}
+            f:image: {}
+            f:kind: {}
+            f:metadata: {}
+            f:userData: {}
+    manager: machineset-controller
+    operation: Update
+    time: "2021-01-28T09:50:09Z"
+  - apiVersion: machine.openshift.io/v1beta1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:metal3.io/BareMetalHost: {}
+        f:finalizers:
+          .: {}
+          v:"machine.machine.openshift.io": {}
+      f:spec:
+        f:providerID: {}
+      f:status:
+        .: {}
+        f:addresses: {}
+        f:phase: {}
+    manager: machine-controller-manager
+    operation: Update
+    time: "2021-01-28T10:03:53Z"
+  - apiVersion: machine.openshift.io/v1beta1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        f:lastUpdated: {}
+        f:nodeRef:
+          .: {}
+          f:kind: {}
+          f:name: {}
+          f:uid: {}
+    manager: nodelink-controller
+    operation: Update
+    time: "2021-01-28T10:07:35Z"
+  name: ocp-edge-cluster-0-mnwdz-worker-0-t752v
+  namespace: openshift-machine-api
+  ownerReferences:
+  - apiVersion: machine.openshift.io/v1beta1
+    blockOwnerDeletion: true
+    controller: true
+    kind: MachineSet
+    name: ocp-edge-cluster-0-mnwdz-worker-0
+    uid: 119a1bfc-a3e5-4525-8d6f-867b8729a2b3
+  resourceVersion: "306613"
+  selfLink: /apis/machine.openshift.io/v1beta1/namespaces/openshift-machine-api/machines/ocp-edge-cluster-0-mnwdz-worker-0-t752v
+  uid: d2f22aaa-4ff0-46ec-8e6f-b23c7090f538
+spec:
+  metadata: {}
+  providerID: baremetalhost:///openshift-machine-api/openshift-worker-0-1/01043364-fc05-4dc2-a00b-a68f86a5ac78
+  providerSpec:
+    value:
+      apiVersion: baremetal.cluster.k8s.io/v1alpha1
+      hostSelector: {}
+      image:
+        checksum: http://172.22.0.3:6180/images/rhcos-47.83.202101161239-0-openstack.x86_64.qcow2/rhcos-47.83.202101161239-0-compressed.x86_64.qcow2.md5sum
+        url: http://172.22.0.3:6180/images/rhcos-47.83.202101161239-0-openstack.x86_64.qcow2/rhcos-47.83.202101161239-0-compressed.x86_64.qcow2
+      kind: BareMetalMachineProviderSpec
+      metadata:
+        creationTimestamp: null
+      userData:
+        name: worker-user-data
+status:
+  addresses:
+  - address: 192.168.123.102
+    type: InternalIP
+  - address: fd2e:6f44:5dd8::144
+    type: InternalIP
+  - address: 172.22.0.59
+    type: InternalIP
+  - address: fe80::f288:146c:b0f4:caf0%enp4s0
+    type: InternalIP
+  - address: worker-0-1.ocp-edge-cluster-0.qe.lab.redhat.com
+    type: Hostname
+  - address: worker-0-1.ocp-edge-cluster-0.qe.lab.redhat.com
+    type: InternalDNS
+  lastUpdated: "2021-01-29T02:03:00Z"
+  nodeRef:
+    kind: Node
+    name: worker-0-1.ocp-edge-cluster-0.qe.lab.redhat.com
+    uid: aba359fd-6d6e-4424-a56e-46af438cee96
+  phase: Running

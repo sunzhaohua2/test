@@ -1,0 +1,64 @@
+apiVersion: metal3.io/v1alpha1
+kind: Provisioning
+metadata:
+  creationTimestamp: "2021-01-28T09:32:43Z"
+  finalizers:
+  - provisioning.metal3.io
+  generation: 1
+  managedFields:
+  - apiVersion: metal3.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:spec:
+        .: {}
+        f:provisioningDHCPRange: {}
+        f:provisioningIP: {}
+        f:provisioningInterface: {}
+        f:provisioningNetwork: {}
+        f:provisioningNetworkCIDR: {}
+        f:provisioningOSDownloadURL: {}
+    manager: cluster-bootstrap
+    operation: Update
+    time: "2021-01-28T09:32:43Z"
+  - apiVersion: metal3.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:finalizers:
+          .: {}
+          v:"provisioning.metal3.io": {}
+      f:status:
+        .: {}
+        f:generations: {}
+        f:observedGeneration: {}
+        f:readyReplicas: {}
+    manager: cluster-baremetal-operator
+    operation: Update
+    time: "2021-01-28T09:49:10Z"
+  name: provisioning-configuration
+  resourceVersion: "6218"
+  selfLink: /apis/metal3.io/v1alpha1/provisionings/provisioning-configuration
+  uid: baecf3c4-f25b-440a-8946-3c76be8f7295
+spec:
+  provisioningDHCPRange: 172.22.0.10,172.22.0.254
+  provisioningIP: 172.22.0.3
+  provisioningInterface: enp4s0
+  provisioningNetwork: Managed
+  provisioningNetworkCIDR: 172.22.0.0/24
+  provisioningOSDownloadURL: http://registry.ocp-edge-cluster-0.qe.lab.redhat.com:8080/images/rhcos-47.83.202101161239-0-openstack.x86_64.qcow2.gz?sha256=f887d4cfb0cdcd459a08a37fea447ccca01fbb196399163ed58df5b2babe2893
+status:
+  generations:
+  - group: apps
+    hash: ""
+    lastGeneration: 1
+    name: metal3
+    namespace: openshift-machine-api
+    resource: deployments
+  - group: apps
+    hash: ""
+    lastGeneration: 1
+    name: metal3-image-cache
+    namespace: openshift-machine-api
+    resource: daemonsets
+  observedGeneration: 1
+  readyReplicas: 0

@@ -1,0 +1,109 @@
+apiVersion: machine.openshift.io/v1beta1
+kind: MachineSet
+metadata:
+  creationTimestamp: "2021-01-28T09:32:45Z"
+  generation: 1
+  labels:
+    machine.openshift.io/cluster-api-cluster: ocp-edge-cluster-0-mnwdz
+    machine.openshift.io/cluster-api-machine-role: worker
+    machine.openshift.io/cluster-api-machine-type: worker
+  managedFields:
+  - apiVersion: machine.openshift.io/v1beta1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:labels:
+          .: {}
+          f:machine.openshift.io/cluster-api-cluster: {}
+          f:machine.openshift.io/cluster-api-machine-role: {}
+          f:machine.openshift.io/cluster-api-machine-type: {}
+      f:spec:
+        .: {}
+        f:replicas: {}
+        f:selector:
+          .: {}
+          f:matchLabels:
+            .: {}
+            f:machine.openshift.io/cluster-api-cluster: {}
+            f:machine.openshift.io/cluster-api-machineset: {}
+        f:template:
+          .: {}
+          f:metadata:
+            .: {}
+            f:labels:
+              .: {}
+              f:machine.openshift.io/cluster-api-cluster: {}
+              f:machine.openshift.io/cluster-api-machine-role: {}
+              f:machine.openshift.io/cluster-api-machine-type: {}
+              f:machine.openshift.io/cluster-api-machineset: {}
+          f:spec:
+            .: {}
+            f:metadata: {}
+            f:providerSpec:
+              .: {}
+              f:value:
+                .: {}
+                f:apiVersion: {}
+                f:hostSelector: {}
+                f:image: {}
+                f:kind: {}
+                f:metadata: {}
+                f:userData: {}
+      f:status:
+        .: {}
+        f:fullyLabeledReplicas: {}
+        f:observedGeneration: {}
+        f:replicas: {}
+    manager: cluster-bootstrap
+    operation: Update
+    time: "2021-01-28T09:32:45Z"
+  - apiVersion: machine.openshift.io/v1beta1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        f:availableReplicas: {}
+        f:fullyLabeledReplicas: {}
+        f:observedGeneration: {}
+        f:readyReplicas: {}
+        f:replicas: {}
+    manager: machineset-controller
+    operation: Update
+    time: "2021-01-28T10:08:45Z"
+  name: ocp-edge-cluster-0-mnwdz-worker-0
+  namespace: openshift-machine-api
+  resourceVersion: "26703"
+  selfLink: /apis/machine.openshift.io/v1beta1/namespaces/openshift-machine-api/machinesets/ocp-edge-cluster-0-mnwdz-worker-0
+  uid: 119a1bfc-a3e5-4525-8d6f-867b8729a2b3
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      machine.openshift.io/cluster-api-cluster: ocp-edge-cluster-0-mnwdz
+      machine.openshift.io/cluster-api-machineset: ocp-edge-cluster-0-mnwdz-worker-0
+  template:
+    metadata:
+      labels:
+        machine.openshift.io/cluster-api-cluster: ocp-edge-cluster-0-mnwdz
+        machine.openshift.io/cluster-api-machine-role: worker
+        machine.openshift.io/cluster-api-machine-type: worker
+        machine.openshift.io/cluster-api-machineset: ocp-edge-cluster-0-mnwdz-worker-0
+    spec:
+      metadata: {}
+      providerSpec:
+        value:
+          apiVersion: baremetal.cluster.k8s.io/v1alpha1
+          hostSelector: {}
+          image:
+            checksum: http://172.22.0.3:6180/images/rhcos-47.83.202101161239-0-openstack.x86_64.qcow2/rhcos-47.83.202101161239-0-compressed.x86_64.qcow2.md5sum
+            url: http://172.22.0.3:6180/images/rhcos-47.83.202101161239-0-openstack.x86_64.qcow2/rhcos-47.83.202101161239-0-compressed.x86_64.qcow2
+          kind: BareMetalMachineProviderSpec
+          metadata:
+            creationTimestamp: null
+          userData:
+            name: worker-user-data
+status:
+  availableReplicas: 2
+  fullyLabeledReplicas: 2
+  observedGeneration: 1
+  readyReplicas: 2
+  replicas: 2

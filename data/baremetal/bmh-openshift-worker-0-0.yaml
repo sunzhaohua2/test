@@ -1,0 +1,363 @@
+apiVersion: metal3.io/v1alpha1
+kind: BareMetalHost
+metadata:
+  creationTimestamp: "2021-01-28T09:32:43Z"
+  finalizers:
+  - baremetalhost.metal3.io
+  generation: 2
+  managedFields:
+  - apiVersion: metal3.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:spec:
+        .: {}
+        f:bmc:
+          .: {}
+          f:address: {}
+          f:credentialsName: {}
+          f:disableCertificateVerification: {}
+        f:bootMACAddress: {}
+        f:hardwareProfile: {}
+        f:online: {}
+        f:rootDeviceHints:
+          .: {}
+          f:deviceName: {}
+      f:status:
+        .: {}
+        f:errorCount: {}
+        f:errorMessage: {}
+        f:goodCredentials:
+          .: {}
+          f:credentials:
+            f:name: {}
+            f:namespace: {}
+          f:credentialsVersion: {}
+        f:operationHistory:
+          .: {}
+          f:deprovision:
+            .: {}
+            f:end: {}
+            f:start: {}
+          f:inspect:
+            .: {}
+            f:end: {}
+            f:start: {}
+          f:provision:
+            .: {}
+            f:end: {}
+            f:start: {}
+          f:register:
+            .: {}
+            f:end: {}
+            f:start: {}
+        f:provisioning:
+          .: {}
+          f:image:
+            .: {}
+            f:checksum: {}
+            f:url: {}
+        f:triedCredentials:
+          .: {}
+          f:credentials:
+            f:name: {}
+            f:namespace: {}
+          f:credentialsVersion: {}
+    manager: cluster-bootstrap
+    operation: Update
+    time: "2021-01-28T09:32:43Z"
+  - apiVersion: metal3.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:spec:
+        f:consumerRef:
+          .: {}
+          f:apiVersion: {}
+          f:kind: {}
+          f:name: {}
+          f:namespace: {}
+        f:image:
+          .: {}
+          f:checksum: {}
+          f:url: {}
+        f:userData:
+          .: {}
+          f:name: {}
+          f:namespace: {}
+    manager: machine-controller-manager
+    operation: Update
+    time: "2021-01-28T10:00:10Z"
+  - apiVersion: metal3.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:finalizers:
+          .: {}
+          v:"baremetalhost.metal3.io": {}
+      f:status:
+        f:goodCredentials:
+          f:credentials:
+            .: {}
+            f:name: {}
+            f:namespace: {}
+          f:credentialsVersion: {}
+        f:hardware:
+          .: {}
+          f:cpu:
+            .: {}
+            f:arch: {}
+            f:clockMegahertz: {}
+            f:count: {}
+            f:flags: {}
+            f:model: {}
+          f:firmware:
+            .: {}
+            f:bios:
+              .: {}
+              f:date: {}
+              f:vendor: {}
+              f:version: {}
+          f:hostname: {}
+          f:nics: {}
+          f:ramMebibytes: {}
+          f:storage: {}
+          f:systemVendor:
+            .: {}
+            f:manufacturer: {}
+            f:productName: {}
+            f:serialNumber: {}
+        f:hardwareProfile: {}
+        f:lastUpdated: {}
+        f:operationHistory:
+          f:inspect:
+            f:end: {}
+            f:start: {}
+          f:provision:
+            f:end: {}
+            f:start: {}
+          f:register:
+            f:end: {}
+            f:start: {}
+        f:operationalStatus: {}
+        f:poweredOn: {}
+        f:provisioning:
+          f:ID: {}
+          f:bootMode: {}
+          f:image:
+            f:checksum: {}
+            f:url: {}
+          f:rootDeviceHints:
+            .: {}
+            f:deviceName: {}
+          f:state: {}
+        f:triedCredentials:
+          f:credentials:
+            .: {}
+            f:name: {}
+            f:namespace: {}
+          f:credentialsVersion: {}
+    manager: baremetal-operator
+    operation: Update
+    time: "2021-01-28T10:04:54Z"
+  name: openshift-worker-0-0
+  namespace: openshift-machine-api
+  resourceVersion: "304096"
+  selfLink: /apis/metal3.io/v1alpha1/namespaces/openshift-machine-api/baremetalhosts/openshift-worker-0-0
+  uid: bc974e58-5ce6-43d4-ab0f-ac4d480cf276
+spec:
+  bmc:
+    address: redfish://[fd2e:6f44:5dd8::1]:8000/redfish/v1/Systems/b3814bd5-7cb7-4413-865c-bd1fec552f6f
+    credentialsName: openshift-worker-0-0-bmc-secret
+    disableCertificateVerification: true
+  bootMACAddress: 52:54:00:8c:32:e8
+  consumerRef:
+    apiVersion: machine.openshift.io/v1beta1
+    kind: Machine
+    name: ocp-edge-cluster-0-mnwdz-worker-0-l5vbp
+    namespace: openshift-machine-api
+  hardwareProfile: unknown
+  image:
+    checksum: http://172.22.0.3:6180/images/rhcos-47.83.202101161239-0-openstack.x86_64.qcow2/rhcos-47.83.202101161239-0-compressed.x86_64.qcow2.md5sum
+    url: http://172.22.0.3:6180/images/rhcos-47.83.202101161239-0-openstack.x86_64.qcow2/rhcos-47.83.202101161239-0-compressed.x86_64.qcow2
+  online: true
+  rootDeviceHints:
+    deviceName: /dev/sda
+  userData:
+    name: worker-user-data
+    namespace: openshift-machine-api
+status:
+  errorCount: 0
+  errorMessage: ""
+  goodCredentials:
+    credentials:
+      name: openshift-worker-0-0-bmc-secret
+      namespace: openshift-machine-api
+    credentialsVersion: "16734"
+  hardware:
+    cpu:
+      arch: x86_64
+      clockMegahertz: 2200
+      count: 8
+      flags:
+      - 3dnowprefetch
+      - abm
+      - adx
+      - aes
+      - apic
+      - arat
+      - arch_capabilities
+      - arch_perfmon
+      - avx
+      - avx2
+      - bmi1
+      - bmi2
+      - clflush
+      - cmov
+      - constant_tsc
+      - cpuid
+      - cpuid_fault
+      - cx16
+      - cx8
+      - de
+      - ept
+      - ept_ad
+      - erms
+      - f16c
+      - flexpriority
+      - fma
+      - fpu
+      - fsgsbase
+      - fxsr
+      - hle
+      - hypervisor
+      - invpcid
+      - invpcid_single
+      - lahf_lm
+      - lm
+      - mca
+      - mce
+      - mmx
+      - movbe
+      - msr
+      - mtrr
+      - nopl
+      - nx
+      - pae
+      - pat
+      - pcid
+      - pclmulqdq
+      - pdpe1gb
+      - pge
+      - pni
+      - popcnt
+      - pse
+      - pse36
+      - pti
+      - rdrand
+      - rdseed
+      - rdtscp
+      - rep_good
+      - rtm
+      - sep
+      - smap
+      - smep
+      - ss
+      - sse
+      - sse2
+      - sse4_1
+      - sse4_2
+      - ssse3
+      - syscall
+      - tpr_shadow
+      - tsc
+      - tsc_adjust
+      - tsc_deadline_timer
+      - tsc_known_freq
+      - umip
+      - vme
+      - vmx
+      - vnmi
+      - vpid
+      - x2apic
+      - xsave
+      - xsaveopt
+      - xtopology
+      model: Intel(R) Xeon(R) CPU E5-2630 v4 @ 2.20GHz
+    firmware:
+      bios:
+        date: 02/06/2015
+        vendor: EFI Development Kit II / OVMF
+        version: 0.0.0
+    hostname: worker-0-0.ocp-edge-cluster-0.qe.lab.redhat.com
+    nics:
+    - ip: 192.168.123.116
+      mac: 52:54:00:1f:4c:90
+      model: 0x1af4 0x0001
+      name: enp5s0
+      pxe: false
+      speedGbps: 0
+      vlanId: 0
+    - ip: fd2e:6f44:5dd8::119
+      mac: 52:54:00:1f:4c:90
+      model: 0x1af4 0x0001
+      name: enp5s0
+      pxe: false
+      speedGbps: 0
+      vlanId: 0
+    - ip: 172.22.0.91
+      mac: 52:54:00:8c:32:e8
+      model: 0x1af4 0x0001
+      name: enp4s0
+      pxe: true
+      speedGbps: 0
+      vlanId: 0
+    - ip: fe80::f4:cf3a:d072:fc0c%enp4s0
+      mac: 52:54:00:8c:32:e8
+      model: 0x1af4 0x0001
+      name: enp4s0
+      pxe: true
+      speedGbps: 0
+      vlanId: 0
+    ramMebibytes: 16384
+    storage:
+    - hctl: "0:0:0:0"
+      model: QEMU HARDDISK
+      name: /dev/sda
+      rotational: true
+      serialNumber: drive-scsi0-0-0-0
+      sizeBytes: 55834574848
+      vendor: QEMU
+    systemVendor:
+      manufacturer: Red Hat
+      productName: KVM
+      serialNumber: ""
+  hardwareProfile: unknown
+  lastUpdated: "2021-01-29T01:59:59Z"
+  operationHistory:
+    deprovision:
+      end: null
+      start: null
+    inspect:
+      end: "2021-01-28T10:00:02Z"
+      start: "2021-01-28T09:54:02Z"
+    provision:
+      end: "2021-01-28T10:04:54Z"
+      start: "2021-01-28T10:00:10Z"
+    register:
+      end: "2021-01-28T09:54:02Z"
+      start: "2021-01-28T09:54:01Z"
+  operationalStatus: OK
+  poweredOn: true
+  provisioning:
+    ID: 663351b4-324c-4019-83f7-556194b137e6
+    bootMode: UEFI
+    image:
+      checksum: http://172.22.0.3:6180/images/rhcos-47.83.202101161239-0-openstack.x86_64.qcow2/rhcos-47.83.202101161239-0-compressed.x86_64.qcow2.md5sum
+      url: http://172.22.0.3:6180/images/rhcos-47.83.202101161239-0-openstack.x86_64.qcow2/rhcos-47.83.202101161239-0-compressed.x86_64.qcow2
+    rootDeviceHints:
+      deviceName: /dev/sda
+    state: provisioned
+  triedCredentials:
+    credentials:
+      name: openshift-worker-0-0-bmc-secret
+      namespace: openshift-machine-api
+    credentialsVersion: "16734"
