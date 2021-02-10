@@ -1,0 +1,30 @@
+apiVersion: operator.openshift.io/v1alpha1
+kind: ImageContentSourcePolicy
+metadata:
+  creationTimestamp: "2021-02-05T06:31:14Z"
+  generation: 2
+  managedFields:
+  - apiVersion: operator.openshift.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:spec: {}
+    manager: kubectl-create
+    operation: Update
+    time: "2021-02-05T06:31:14Z"
+  - apiVersion: operator.openshift.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:spec:
+        f:repositoryDigestMirrors: {}
+    manager: kubectl-edit
+    operation: Update
+    time: "2021-02-05T06:42:47Z"
+  name: image-policy-stage
+  resourceVersion: "106685"
+  selfLink: /apis/operator.openshift.io/v1alpha1/imagecontentsourcepolicies/image-policy-stage
+  uid: 476915fd-2557-43f6-963a-58e7966c7f32
+spec:
+  repositoryDigestMirrors:
+  - mirrors:
+    - registry.stage.redhat.io
+    source: registry.redhat.io
