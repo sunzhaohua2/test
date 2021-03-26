@@ -1,0 +1,160 @@
+apiVersion: machine.openshift.io/v1beta1
+kind: MachineSet
+metadata:
+  annotations:
+    machine.openshift.io/GPU: "0"
+    machine.openshift.io/memoryMb: "8192"
+    machine.openshift.io/vCPU: "2"
+  creationTimestamp: "2021-02-23T07:24:04Z"
+  generation: 1
+  labels:
+    machine.openshift.io/cluster-api-cluster: sgao-aws-7hlrr
+  managedFields:
+  - apiVersion: machine.openshift.io/v1beta1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:labels:
+          .: {}
+          f:machine.openshift.io/cluster-api-cluster: {}
+      f:spec:
+        .: {}
+        f:deletePolicy: {}
+        f:replicas: {}
+        f:selector:
+          .: {}
+          f:matchLabels:
+            .: {}
+            f:machine.openshift.io/cluster-api-cluster: {}
+            f:machine.openshift.io/cluster-api-machineset: {}
+        f:template:
+          .: {}
+          f:metadata:
+            .: {}
+            f:labels:
+              .: {}
+              f:machine.openshift.io/cluster-api-cluster: {}
+              f:machine.openshift.io/cluster-api-machine-role: {}
+              f:machine.openshift.io/cluster-api-machine-type: {}
+              f:machine.openshift.io/cluster-api-machineset: {}
+              f:machine.openshift.io/os-id: {}
+          f:spec:
+            .: {}
+            f:metadata:
+              .: {}
+              f:labels:
+                .: {}
+                f:node-role.kubernetes.io/worker: {}
+            f:providerSpec:
+              .: {}
+              f:value:
+                .: {}
+                f:ami: {}
+                f:apiVersion: {}
+                f:blockDevices: {}
+                f:credentialsSecret: {}
+                f:deviceIndex: {}
+                f:iamInstanceProfile: {}
+                f:instanceType: {}
+                f:kind: {}
+                f:placement: {}
+                f:securityGroups: {}
+                f:subnet: {}
+                f:tags: {}
+                f:userDataSecret: {}
+    manager: kubectl-create
+    operation: Update
+    time: "2021-02-23T07:24:04Z"
+  - apiVersion: machine.openshift.io/v1beta1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:machine.openshift.io/GPU: {}
+          f:machine.openshift.io/memoryMb: {}
+          f:machine.openshift.io/vCPU: {}
+    manager: machine-controller-manager
+    operation: Update
+    time: "2021-02-23T07:24:04Z"
+  - apiVersion: machine.openshift.io/v1beta1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        .: {}
+        f:availableReplicas: {}
+        f:fullyLabeledReplicas: {}
+        f:observedGeneration: {}
+        f:readyReplicas: {}
+        f:replicas: {}
+    manager: machineset-controller
+    operation: Update
+    time: "2021-02-23T07:33:24Z"
+  name: sgao-aws-7hlrr-windows-worker-us-east-2a1
+  namespace: openshift-machine-api
+  resourceVersion: "68845"
+  selfLink: /apis/machine.openshift.io/v1beta1/namespaces/openshift-machine-api/machinesets/sgao-aws-7hlrr-windows-worker-us-east-2a
+  uid: 21aba73a-f4f7-4e45-870e-01dd1c11e019
+spec:
+  deletePolicy: Newest
+  replicas: 1
+  selector:
+    matchLabels:
+      machine.openshift.io/cluster-api-cluster: sgao-aws-7hlrr
+      machine.openshift.io/cluster-api-machineset: sgao-aws-7hlrr-windows-worker-us-east-2a1
+  template:
+    metadata:
+      labels:
+        machine.openshift.io/cluster-api-cluster: sgao-aws-7hlrr
+        machine.openshift.io/cluster-api-machine-role: worker
+        machine.openshift.io/cluster-api-machine-type: worker
+        machine.openshift.io/cluster-api-machineset: sgao-aws-7hlrr-windows-worker-us-east-2a1
+        machine.openshift.io/os-id: Windows
+    spec:
+      metadata:
+        labels:
+          node-role.kubernetes.io/worker: ""
+      providerSpec:
+        value:
+          ami:
+            id: ami-0f25be484aba16d89
+          apiVersion: awsproviderconfig.openshift.io/v1beta1
+          blockDevices:
+          - ebs:
+              iops: 0
+              kmsKey: {}
+              volumeSize: 120
+              volumeType: gp2
+          credentialsSecret:
+            name: aws-cloud-credentials
+          deviceIndex: 0
+          iamInstanceProfile:
+            id: sgao-aws-7hlrr-worker-profile
+          instanceType: m5a.large
+          kind: AWSMachineProviderConfig
+          metadata:
+            creationTimestamp: null
+          placement:
+            availabilityZone: us-east-2a
+            region: us-east-2
+          securityGroups:
+          - filters:
+            - name: tag:Name
+              values:
+              - sgao-aws-7hlrr-worker-sg
+          subnet:
+            filters:
+            - name: tag:Name
+              values:
+              - sgao-aws-7hlrr-private-us-east-2a
+          tags:
+          - name: kubernetes.io/cluster/sgao-aws-7hlrr
+            value: owned
+          userDataSecret:
+            name: windows-user-data
+status:
+  availableReplicas: 2
+  fullyLabeledReplicas: 2
+  observedGeneration: 1
+  readyReplicas: 2
+  replicas: 2

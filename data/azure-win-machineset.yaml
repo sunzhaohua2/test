@@ -1,0 +1,156 @@
+apiVersion: machine.openshift.io/v1beta1
+kind: MachineSet
+metadata:
+  annotations:
+    machine.openshift.io/GPU: "0"
+    machine.openshift.io/memoryMb: "8192"
+    machine.openshift.io/vCPU: "2"
+  creationTimestamp: "2021-02-23T07:26:08Z"
+  generation: 1
+  labels:
+    machine.openshift.io/cluster-api-cluster: sgao-azure-s6282
+  managedFields:
+  - apiVersion: machine.openshift.io/v1beta1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:labels:
+          .: {}
+          f:machine.openshift.io/cluster-api-cluster: {}
+      f:spec:
+        .: {}
+        f:deletePolicy: {}
+        f:replicas: {}
+        f:selector:
+          .: {}
+          f:matchLabels:
+            .: {}
+            f:machine.openshift.io/cluster-api-cluster: {}
+            f:machine.openshift.io/cluster-api-machineset: {}
+        f:template:
+          .: {}
+          f:metadata:
+            .: {}
+            f:labels:
+              .: {}
+              f:machine.openshift.io/cluster-api-cluster: {}
+              f:machine.openshift.io/cluster-api-machine-role: {}
+              f:machine.openshift.io/cluster-api-machine-type: {}
+              f:machine.openshift.io/cluster-api-machineset: {}
+              f:machine.openshift.io/os-id: {}
+          f:spec:
+            .: {}
+            f:metadata:
+              .: {}
+              f:labels:
+                .: {}
+                f:node-role.kubernetes.io/worker: {}
+            f:providerSpec:
+              .: {}
+              f:value:
+                .: {}
+                f:apiVersion: {}
+                f:credentialsSecret: {}
+                f:image: {}
+                f:kind: {}
+                f:location: {}
+                f:managedIdentity: {}
+                f:networkResourceGroup: {}
+                f:osDisk: {}
+                f:publicIP: {}
+                f:resourceGroup: {}
+                f:subnet: {}
+                f:userDataSecret: {}
+                f:vmSize: {}
+                f:vnet: {}
+                f:zone: {}
+    manager: kubectl-create
+    operation: Update
+    time: "2021-02-23T07:26:08Z"
+  - apiVersion: machine.openshift.io/v1beta1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:machine.openshift.io/GPU: {}
+          f:machine.openshift.io/memoryMb: {}
+          f:machine.openshift.io/vCPU: {}
+    manager: machine-controller-manager
+    operation: Update
+    time: "2021-02-23T07:26:08Z"
+  - apiVersion: machine.openshift.io/v1beta1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        .: {}
+        f:availableReplicas: {}
+        f:fullyLabeledReplicas: {}
+        f:observedGeneration: {}
+        f:readyReplicas: {}
+        f:replicas: {}
+    manager: machineset-controller
+    operation: Update
+    time: "2021-02-23T07:31:28Z"
+  name: windows1
+  namespace: openshift-machine-api
+  resourceVersion: "63903"
+  selfLink: /apis/machine.openshift.io/v1beta1/namespaces/openshift-machine-api/machinesets/windows
+  uid: 6401dad2-4543-473e-8e5a-80f0d7b59b56
+spec:
+  deletePolicy: Newest
+  replicas: 1
+  selector:
+    matchLabels:
+      machine.openshift.io/cluster-api-cluster: sgao-azure-s6282
+      machine.openshift.io/cluster-api-machineset: windows1
+  template:
+    metadata:
+      labels:
+        machine.openshift.io/cluster-api-cluster: sgao-azure-s6282
+        machine.openshift.io/cluster-api-machine-role: worker
+        machine.openshift.io/cluster-api-machine-type: worker
+        machine.openshift.io/cluster-api-machineset: windows1
+        machine.openshift.io/os-id: Windows
+    spec:
+      metadata:
+        labels:
+          node-role.kubernetes.io/worker: ""
+      providerSpec:
+        value:
+          apiVersion: azureproviderconfig.openshift.io/v1beta1
+          credentialsSecret:
+            name: azure-cloud-credentials
+            namespace: openshift-machine-api
+          image:
+            offer: WindowsServer
+            publisher: MicrosoftWindowsServer
+            resourceID: ""
+            sku: 2019-Datacenter-with-Containers
+            version: latest
+          kind: AzureMachineProviderSpec
+          location: centralus
+          managedIdentity: sgao-azure-s6282-identity
+          metadata:
+            creationTimestamp: null
+          networkResourceGroup: sgao-azure-s6282-rg
+          osDisk:
+            diskSizeGB: 128
+            managedDisk:
+              storageAccountType: Premium_LRS
+            osType: Windows
+          publicIP: false
+          resourceGroup: sgao-azure-s6282-rg
+          subnet: sgao-azure-s6282-worker-subnet
+          userDataSecret:
+            name: windows-user-data
+            namespace: openshift-machine-api
+          vmSize: Standard_D2s_v3
+          vnet: sgao-azure-s6282-vnet
+          zone: ""
+status:
+  availableReplicas: 2
+  fullyLabeledReplicas: 2
+  observedGeneration: 1
+  readyReplicas: 2
+  replicas: 2
