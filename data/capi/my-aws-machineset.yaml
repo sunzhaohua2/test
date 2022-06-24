@@ -1,0 +1,24 @@
+---
+apiVersion: machine.openshift.io/v1beta1
+kind: MachineSet
+metadata:
+  name: capi-ms
+  namespace: openshift-cluster-api
+spec:
+  clusterName: zhsunaws24-lzwc7
+  replicas: 1
+  selector:
+    matchLabels: 
+      machine.openshift.io/cluster-api-cluster: zhsunaws24-lzwc7
+  template:
+    metadata:
+      labels:
+        machine.openshift.io/cluster-api-cluster: zhsunaws24-lzwc7
+    spec:
+      bootstrap:
+         dataSecretName: worker-user-data
+      clusterName: zhsunaws24-lzwc7
+      infrastructureRef:
+        apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+        kind: AWSMachineTemplate
+        name: capi-aws-machine-template

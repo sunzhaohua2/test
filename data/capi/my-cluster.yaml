@@ -1,0 +1,11 @@
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: Cluster
+metadata:
+  name: zhsunaws24-lzwc7
+  namespace: openshift-cluster-api
+spec:
+  infrastructureRef:
+    apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+    kind: AWSCluster
+    name: zhsunaws24-lzwc7
+    namespace: openshift-cluster-api

@@ -1,0 +1,7 @@
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: AWSCluster
+metadata:
+  name: zhsunaws24-lzwc7
+  namespace: openshift-cluster-api
+spec:
+  region: us-east-2

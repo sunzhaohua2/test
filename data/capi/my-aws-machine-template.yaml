@@ -1,0 +1,26 @@
+apiVersion: infrastructure.cluster.x-k8s.io/v1alpha4
+kind: AWSMachineTemplate
+metadata:
+  name: capi-aws-machine-template
+  namespace: openshift-cluster-api
+spec:
+  template:
+    spec:
+      uncompressedUserData: true
+      iamInstanceProfile: zhsunaws24-lzwc7-worker-profile
+      instanceType: m5.large
+      failureDomain: us-east-2a
+      cloudInit:
+        insecureSkipSecretsManager: true
+      ami:
+        id: ami-01990fc3bdf30bc13
+      subnet:
+        filters:
+        - name: tag:Name
+          values:
+          - zhsunaws24-lzwc7-private-us-east-2a
+      additionalSecurityGroups:
+      - filters:
+        - name: tag:Name
+          values:
+          - zhsunaws24-lzwc7-worker-sg
