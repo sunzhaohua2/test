@@ -8,12 +8,12 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      machine.openshift.io/cluster-api-cluster: zhsungcp9-wl2wh
+      machine.openshift.io/cluster-api-cluster: jliu-eus46-xcpkt
       machine.openshift.io/cluster-api-machineset: default-valued
   template:
     metadata:
       labels:
-        machine.openshift.io/cluster-api-cluster: zhsungcp9-wl2wh
+        machine.openshift.io/cluster-api-cluster: jliu-eus46-xcpkt
         machine.openshift.io/cluster-api-machine-role: worker
         machine.openshift.io/cluster-api-machine-type: worker
         machine.openshift.io/cluster-api-machineset: default-valued
@@ -22,4 +22,4 @@ spec:
       providerSpec:
         value:
           region: us-central1
-          zone: us-central1-c 
+          zone: us-central1-b 
