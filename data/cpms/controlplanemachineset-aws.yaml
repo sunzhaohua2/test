@@ -1,0 +1,89 @@
+apiVersion: machine.openshift.io/v1
+kind: ControlPlaneMachineSet
+metadata:
+  name: cluster
+  namespace: openshift-machine-api
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      machine.openshift.io/cluster-api-machine-role: master
+      machine.openshift.io/cluster-api-machine-type: master
+  template:
+    machineType: machines_v1beta1_machine_openshift_io
+    machines_v1beta1_machine_openshift_io:
+      metadata: 
+        labels:
+          machine.openshift.io/cluster-api-machine-role: master
+          machine.openshift.io/cluster-api-machine-type: master
+          machine.openshift.io/cluster-api-cluster: pewang-0720awsefs-fwb48
+      failureDomains:
+        platform: AWS
+        aws:
+        - placement:
+            availabilityZone: us-east-2a
+          subnet:
+            type: Filters
+            filters:
+            - name: tag:Name
+              values:
+              - pewang-0720awsefs-fwb48-private-us-east-2a
+        - placement:
+            availabilityZone: us-east-2b
+          subnet:
+            type: Filters
+            filters:
+            - name: tag:Name
+              values: 
+              - pewang-0720awsefs-fwb48-private-us-east-2b
+        - placement:
+            availabilityZone: us-east-2c
+          subnet:
+            type: Filters
+            filters:
+            - name: tag:Name
+              values:
+              - pewang-0720awsefs-fwb48-private-us-east-2c
+      spec:
+        providerSpec:
+          value:
+            ami:
+              id: ami-01990fc3bdf30bc13
+            apiVersion: machine.openshift.io/v1beta1
+            blockDevices:
+            - ebs:
+                encrypted: true
+                iops: 0
+                kmsKey:
+                  arn: ""
+                volumeSize: 120
+                volumeType: gp3
+            credentialsSecret:
+              name: aws-cloud-credentials
+            deviceIndex: 0
+            iamInstanceProfile:
+              id: pewang-0720awsefs-fwb48-master-profile
+            instanceType: m6i.xlarge
+            kind: AWSMachineProviderConfig
+            loadBalancers:
+            - name: pewang-0720awsefs-fwb48-int
+              type: network
+            - name: pewang-0720awsefs-fwb48-ext
+              type: network
+            metadata:
+              creationTimestamp: null
+            metadataServiceOptions: {}
+            placement:
+              region: us-east-2
+            securityGroups:
+            - filters:
+              - name: tag:Name
+                values:
+                - pewang-0720awsefs-fwb48-master-sg
+            tags:
+            - name: kubernetes.io/cluster/pewang-0720awsefs-fwb48
+              value: owned
+            userDataSecret:
+              name: master-user-data
